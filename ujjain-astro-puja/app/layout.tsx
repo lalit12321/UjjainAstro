@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "Ujjain Astro | NRI Online Puja Booking, Kaal Sarp & Mangal Dosh Puja Ujjain",
   description:
     "Book authentic Kaal Sarp Dosh Puja, Mangal Dosh Puja, Pitra Dosh Puja, Rudrabhishek, and Mahamrityunjay Jaap in Ujjain. NRI-friendly online puja, remote puja, live video puja, and offline temple puja available for devotees in India and abroad.",
+  verification: {
+  google: 'cWvp5NrIyXyqrONyhiyu_KMUup2QiVmDDo5prH6BPC4',
+},
   alternates: {
     canonical: '/',
   },
