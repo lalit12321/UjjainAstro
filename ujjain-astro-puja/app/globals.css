@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 15 23 42;
+  --foreground: 248 250 252;
+  --gold: 212 175 55;
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+body {
+  background-color: rgb(17 17 23 / 0.5);
+  color: rgb(248 250 252);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 { 
+  font-family: 'Playfair Display', 'serif';
+  font-weight: 700;
+}
+
+@layer components {
+  .container-custom { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section-padding { @apply py-16 md:py-24 lg:py-32; }
+  .card { @apply bg-dark-800/50 backdrop-blur-sm border border-dark-700/50 rounded-2xl p-6 transition-all duration-300; }
+  .card-hover { @apply hover:border-gold-500/50 hover:shadow-lg hover:shadow-gold-500/10 hover:-translate-y-1; }
+  .btn-primary { @apply inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-dark-950 font-semibold rounded-xl transition-all hover:from-gold-400 hover:to-gold-500 hover:shadow-lg hover:shadow-gold-500/25 hover:-translate-y-0.5; }
+  .btn-secondary { @apply inline-flex items-center justify-center px-6 py-3 bg-dark-800 text-dark-50 font-semibold rounded-xl border border-dark-600 transition-all hover:bg-dark-700; }
+  .btn-outline { @apply inline-flex items-center justify-center px-6 py-3 bg-transparent text-gold-400 font-semibold rounded-xl border border-gold-400 transition-all hover:bg-gold-400 hover:text-dark-950; }
+  .input-field { @apply w-full px-4 py-3 bg-dark-800/50 border border-dark-600 rounded-xl text-dark-50 placeholder-dark-400 focus:outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20; }
+  .section-title { @apply text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-dark-50; }
+  .section-subtitle { @apply text-lg md:text-xl text-dark-300 max-w-2xl; }
+  .text-gradient { @apply bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 bg-clip-text text-transparent; }
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background-color: rgb(15 17 42); }
+::-webkit-scrollbar-thumb { background-color: rgb(55 65 81); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background-color: rgb(75 85 99); }
+::selection { background-color: rgba(245 158 11 / 0.3); color: rgb(253 230 138); }
