@@ -5,11 +5,15 @@ import { ArrowRight } from 'lucide-react';
 import Card from '../../src/components/ui/Card';
 import { blogPosts } from '../../src/data/blog';
 import { serviceImageBySlug } from '../../src/data/serviceImages';
+import JsonLd from '../../src/components/JsonLd';
+import { breadcrumbSchema } from '../../src/lib/schema';
 
 const ogImage = '/images/optimized/hero-mahakaleshwar-ujjain.jpg';
 
 export const metadata: Metadata = {
-  title: 'Puja Blog for NRI & Abroad Devotees | Ujjain Astro',
+  // Brand suffix dropped — the root layout's title.template appends
+  // " | Ujjain Astro" automatically, so keeping it here would double it.
+  title: 'Puja Guides for NRI & Abroad Devotees',
   description:
     'Read detailed guides for Kaal Sarp Dosh Puja, Mangal Dosh Puja, Navgraha Shanti, and all puja services in Ujjain with online, remote, and NRI-friendly booking options.',
   alternates: {
@@ -48,7 +52,9 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ujjainastro.vercel.app';
+  // REMOVED: `const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ujjainastro.vercel.app'`
+  // This was the fourth copy of that vercel.app fallback. URLs now come from
+  // src/lib/siteConfig.ts, which falls back to the real production host.
   const cardBackgrounds = [
     'from-amber-500/30 via-gold-500/20 to-dark-900',
     'from-orange-500/30 via-gold-500/20 to-dark-900',
@@ -56,30 +62,14 @@ export default function BlogPage() {
     'from-emerald-500/25 via-gold-500/20 to-dark-900',
   ];
 
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: `${siteUrl}/`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Blog',
-        item: `${siteUrl}/blog`,
-      },
-    ],
-  };
-
   return (
     <main className="py-24 bg-dark-950 min-h-screen">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      <JsonLd
+        id="schema-breadcrumb"
+        data={breadcrumbSchema([
+          { name: 'Home', path: '' },
+          { name: 'Blog', path: 'blog' },
+        ])}
       />
       <div className="container-custom">
         <div className="text-center mb-14">

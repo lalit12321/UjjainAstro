@@ -62,4 +62,12 @@ export interface BlogPost {
   excerpt: string;
   keywords: string[];
   sections: BlogSection[];
+  /**
+   * ADDED — the site previously had no date or author field at all, so posts
+   * rendered with no freshness signal and no way to emit Article schema.
+   * ISO 8601 date strings, e.g. '2026-07-30'.
+   */
+  publishedAt: string;
+  updatedAt: string;
+  author: string;
 }
